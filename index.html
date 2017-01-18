@@ -59,54 +59,6 @@
     #carousel_id {
         background-color:#DD2121
     }
-
-* {
-    box-sizing: border-box;
-}
-
-
-.fullscreen-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
-}
-
-.fullscreen-bg__video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-@media (min-aspect-ratio: 16/9) {
-    .fullscreen-bg__video {
-        height: 300%;
-        top: -100%;
-    }
-}
-
-@media (max-aspect-ratio: 16/9) {
-    .fullscreen-bg__video {
-        width: 300%;
-        left: -100%;
-    }
-}
-
-@media (max-width: 267px) {
-    .fullscreen-bg {
-        background: url('../img/videoframe.jpg') center center / cover no-repeat;
-    }
-
-    .fullscreen-bg__video {
-        display: none;
-    }
-}
-
     </style>
 </head>
 
@@ -119,17 +71,64 @@
         </script>
     </div>
 
-
     <div id="wrap" class="container">
-<!--     <div class="fullscreen-bg">
-        <video preload autoplay controls class="fullscreen-bg__video">
-            <source src="auv.mp4" type="video/mp4">
-        </video>
-    </div> -->
-
         <div class="container">
-            <div class="row" style="margin-top: 60px;">
-                <iframe src="https://www.youtube.com/embed/rQJi97ODW2g?loop=1&autoplay=1&playlist=rQJi97ODW2g" frameborder="0" allowfullscreen width="100%" height="320"></iframe>
+            <div class="row" style="margin-top:60px;">
+                <div id="carousel" class="col-md-12">
+                    <!-- begin carousel -->
+                    <div class="carousel slide" id="carousel_id">
+                        <ol class="carousel-indicators">
+                            <li class="active" data-slide-to="0" data-target="#carousel_id">
+                            </li>
+                            <li data-slide-to="1" data-target="#carousel_id">
+                            </li>
+                            <li data-slide-to="2" data-target="#carousel_id">
+                            </li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active" align="center">
+                                <img alt="" src="resources/carousel/auv1.jpg">
+                                <div class="carousel-caption">
+                                    <h4>
+                                        KRAKEN 2.0
+                                    </h4>
+                                    <p>
+                                        Second version of Kraken with new chassis.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item" align="center">
+                                <img alt="" src="resources/carousel/auv2.jpg">
+                                <div class="carousel-caption">
+                                    <h4>
+                                        KRAKEN 1.0
+                                    </h4>
+                                    <p>
+                                        The first version of Kraken with torpedo shaped hull.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item" align="center">
+                                <img alt="" src="resources/carousel/auv3.jpg">
+                                <div class="carousel-caption">
+                                    <h4>
+                                        KRAKEN 1.0
+                                    </h4>
+                                    <p>
+                                        Kraken 1.0 during actual run.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel_id" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel_id" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                    <!-- end carousel -->
+                </div>
             </div>
 
             <div class="row">
@@ -174,6 +173,8 @@
                         }
                     }(document, "script", "twitter-wjs");
                     </script>
+                    <iframe src="https://www.youtube.com/embed/rQJi97ODW2g" frameborder="0" allowfullscreen width="100%" height="320"></iframe>
+
                 </div>
             </div>
         </div>
@@ -191,7 +192,11 @@
 $(document).ready(function() {
     $('#demo').scrollbox();
 });
+$('.carousel').carousel({
+    interval: 2000
+});
 
+$('.carousel').carousel('cycle');
 </script>
 
 </html>
